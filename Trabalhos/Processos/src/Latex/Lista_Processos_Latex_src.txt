@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\usepackage{fullpage,enumitem,amssymb,amsmath,xcolor}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\setlength{\parskip}{1em}
+\usepackage{siunitx}
+\usepackage{setspace}
+
+
+\title{ECM225 – Sistemas Operacionais
+
+Lista de Exercícios
+
+Processos}
+\author{Marco Furlan}
+\date{Março 2021}
+
+\begin{document}
+    \maketitle
+    {\large \textbf{Alunos:}}
+
+    \begingroup % tabular Alunos
+        \setlength{\tabcolsep}{20pt}
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{lc} % Alunos
+            Rodrigo Machado Pedreira & 18.01569-7\\
+            Lucas Pedreira Barreto & 17.01106-0\\
+            ADICIONAR OS OUTROS NOMES & \\
+        \end{tabular} % Alunos
+    \endgroup % tabular Alunos
+    \bigskip
+    \begin{enumerate} % Perguntas Lista Processos
+        \item Um \textbf{computador} possui \textbf{espaço de memória} suficiente para manter \textbf{cinco programas em execução}. Esses programas ficam \textbf{ociosos 50\%} do tempo \textbf{aguardando operações de E/S}. Que \textbf{fração do tempo da CPU} é \textbf{perdida} em \textbf{operações de E/S?} \textbf{Dica}: a resposta é a porcentagem de tempo em que o primeiro e o segundo e o terceiro e o quarto e o quinto programa estão simultaneamente ociosos.\vspace{5mm}\\% P.1
+
+
+        \item Um \textbf{computador} possui \textbf{4GB de RAM}, da qual o \textbf{sistema operacional} ocupa \textbf{512MB}. \textbf{Supor}, por simplicidade, que \textbf{todos os processos necessitem de 256 MB} e que \textbf{possuem as mesmas características}. Se a \textbf{meta} é \textbf{obter} uma \textbf{utilização de CPU de 99\%, qual é a máxima porcentagem} de \textbf{tempo de E/S} que pode ser \textbf{tolerada}? \textbf{Dica}: calcule quantos programas podem ser executados na memória. Depois, utilize uma estratégia similar à do exercício 1 para descobrir o valor pedido.\vspace{5mm}\\% P.2
+
+
+        \item \textbf{Supor} que dois jobs, c\textbf{ada um necessitando de 20 minutos} de \textbf{tempo de CPU}, são \textbf{iniciados simultaneamente. Em que tempo o último job terminará} se: (a) eles são executados sequencialmente; (b) eles são executados em paralelo. \textbf{Assumir 50\% de espera} em \textbf{operações de E/S.}\vspace{5mm}\\% P.3
+
+
+        \item Considerar o seguinte \textbf{código em C}:\vspace{5mm}\\% P.4
+            \fbox{\begin{minipage}{\textwidth}
+
+                void main( ) \{
+
+                \hspace{5.5mm} fork( );
+
+                \hspace{5.5mm} fork( );
+
+                \hspace{5.5mm} exit( );
+
+                \}
+            \end{minipage}}
+
+            \textbf{Quantos processos-filho} são \textbf{criados durante a execução} deste programa?\medskip
+
+        \item Pode-se \textbf{medir se um processo} é \textbf{limitado à CPU} ou \textbf{limitado à E/S apenas analisando} o seu \textbf{código-fonte}? E \textbf{como} isso pode \textbf{ser verificado} em \textbf{tempo de execução}?\vspace{5mm}\\% P.5
+
+
+    \end{enumerate} % Perguntas Lista Processos
+\end{document}

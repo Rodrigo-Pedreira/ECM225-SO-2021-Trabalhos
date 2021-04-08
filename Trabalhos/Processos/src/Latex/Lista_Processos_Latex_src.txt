@@ -27,74 +27,75 @@ Processos}
 \begin{document}
     \maketitle
     {\large \textbf{Alunos:}}
-        
+
     \begingroup % tabular Alunos
         \setlength{\tabcolsep}{20pt}
         \renewcommand{\arraystretch}{1.5}
         \begin{tabular}{lc} % Alunos
             Rodrigo Machado Pedreira & 18.01569-7\\
             Lucas Pedreira Barreto & 17.01106-0\\
-            ADICIONAR OS OUTROS NOMES & \\
+            Gabriel Gomes Bermudi Santos & 18.00947-6\\
+            Pedro Henrique de Freitas Lemes & 19.00671-3\\
         \end{tabular} % Alunos
     \endgroup % tabular Alunos
     \bigskip
     \begin{enumerate} % Perguntas Lista Processos
         \item Um \textbf{computador} possui \textbf{espaço de memória} suficiente para manter \textbf{cinco programas em execução}. Esses programas ficam \textbf{ociosos 50\%} do tempo \textbf{aguardando operações de E/S}. Que \textbf{fração do tempo da CPU} é \textbf{perdida} em \textbf{operações de E/S?} \textbf{Dica}: a resposta é a porcentagem de tempo em que o primeiro e o segundo e o terceiro e o quarto e o quinto programa estão simultaneamente ociosos.% P.1
-        \medskip
-            
-            Cada programa $\xrightarrow{} \dfrac{1}{2}$
-                
-            Como os cinco tem de estar ociosos ao mesmo tempo:
-                
+
+            Cada programa $\xrightarrow{} \dfrac{1}{2}$\vspace{-0.2em}
+
+            Como os cinco tem de estar ociosos ao mesmo tempo:\vspace{-0.2em}
+
             Cinco programas $\xrightarrow{} \dfrac{1}{2^5} = \frac{1}{32} = \textbf{3.125\%}$
             \medskip
         \item Um \textbf{computador} possui \textbf{4GB de RAM}, da qual o \textbf{sistema operacional} ocupa \textbf{512MB}. \textbf{Supor}, por simplicidade, que \textbf{todos os processos necessitem de 256 MB} e que \textbf{possuem as mesmas características}. Se a \textbf{meta} é \textbf{obter} uma \textbf{utilização de CPU de 99\%, qual é a máxima porcentagem} de \textbf{tempo de E/S} que pode ser \textbf{tolerada}? \textbf{Dica}: calcule quantos programas podem ser executados na memória. Depois, utilize uma estratégia similar à do exercício 1 para descobrir o valor pedido.\smallskip% P.2
-        
+
             Total: $4GB = 4$ x $1024$ MB\smallskip\\
             Quantidade de programas que cabem no espaço restante (Total menos Sistema Operacional):\smallskip\\
             $(4$ x $1024 - 512)/256 = 14$ programas
-            
+
             Ou seja: $x^{14} = 0.01$ (\% tempo ocioso) $\xrightarrow{} x = \textbf{72\%}$, programas podem ficar ociosos no máximo por 72\% do tempo.
-            
+
         \item \textbf{Supor} que dois jobs, c\textbf{ada um necessitando de 20 minutos} de \textbf{tempo de CPU}, são \textbf{iniciados simultaneamente. Em que tempo o último job terminará} se: (a) eles são executados sequencialmente; (b) eles são executados em paralelo. \textbf{Assumir 50\% de espera} em \textbf{operações de E/S.}\medskip% P.3
-            
+
             Um programa rodando em um computador está ou ocioso (por exemplo esperando a conclusão de operações de E/S) ou sendo executado pela CPU. Chama-se de tempo de CPU o tempo em que um programa gasta sendo executado pela CPU, sem contar o tempo perdido aguardado E/S de dados. Portanto dizer que um programa fica 50\% do tempo ocioso é equivalente a dizer que ele fica 50\% do tempo em execução.
-            
+
             \begin{enumerate}[label=(\alph*)]
                 \item \textbf{Processos em sequencia:}
-                
+
                     Para 1 job: $20$ min $ = 50\% \xrightarrow{} 100\% = 40$ min\\
                     Então para 2 jobs em sequencia $40 * 2 = \textbf{80}$ \textbf{min}
                 \item \textbf{Processos em paralelo:}
-                
+
                     1 processo gasta 20 min em execução e 20 min ocioso, então se executarmos 2 destes processos em paralelo podemos, em uma situação ideal, alternar o processo em execução na CPU enquanto o outro está esperando E/S assim a CPU estará sempre executando um processo e nenhum tempo é desperdiçado com operações de E/S. Então teremos $20 + 20 = \textbf{40}$ \textbf{min}
+                    % Talvez seja 20/{[1-(0.5*0.5)]/2} = 53 min
             \end{enumerate}
-        
+
             \bigskip
         \item Considerar o seguinte \textbf{código em C}:\vspace{5mm}\\% P.4
             \fbox{\begin{minipage}{\textwidth}
-            
+
                 void main( ) \{
-                
+
                 \hspace{5.5mm} fork( );
-                
-                \hspace{5.5mm} fork( ); 
-                
+
+                \hspace{5.5mm} fork( );
+
                 \hspace{5.5mm} exit( );
-                
+
                 \}
             \end{minipage}}
-            
+
             \textbf{Quantos processos-filho} são \textbf{criados durante a execução} deste programa?\smallskip
-            
+
             \textbf{4 processos-filhos}, 2 no primeiro primeiro fork e noutro estes dois processos gerarão outros 2 processos filhos cada.
-            
+
             \bigskip
         \item Pode-se \textbf{medir se um processo} é \textbf{limitado à CPU} ou \textbf{limitado à E/S apenas analisando} o seu \textbf{código-fonte}? E \textbf{como} isso pode \textbf{ser verificado} em \textbf{tempo de execução}?\medskip% P.5
-        
+
         Existem métodos para analisar código e prever o tempo de execução, este é um campo de estudo em desenvolvimento com muito interesse e investimento pois é algo muito importante para certos equipamentos que dependem muito do tempo, como softwares de maquinas medicas ou software usados em aviões. Essa analise estática do código tenta prever os piores casos de tempo de execução e tenta encontrar os principais culpados e maneiras de melhorar o tempo de execução. Assim existe a possibilidade de descobrir através do código fonte se um programa será limitado a operações E/S ou à CPU.
-        
+
         É possível medir o tempo total que um programa levou do começo ao fim e subtrair dele o tempo de execução, este ultimo não inclui operações de E/S. Assim obtém-se o tempo gasto pelas operações de E/S.
-        
+
     \end{enumerate} % Perguntas Lista Processos
 \end{document}

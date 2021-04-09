@@ -63,12 +63,14 @@ Processos}
             \begin{enumerate}[label=(\alph*)]
                 \item \textbf{Processos em sequencia:}
 
-                    Para 1 job: $20$ min $ = 50\% \xrightarrow{} 100\% = 40$ min\\
+                    Para 1 job: $20$ min $ = 50\% \xrightarrow{} 100\% = 40$ min\vspace{0.2em}\\
                     Então para 2 jobs em sequencia $40 * 2 = \textbf{80}$ \textbf{min}
                 \item \textbf{Processos em paralelo:}
 
-                    1 processo gasta 20 min em execução e 20 min ocioso, então se executarmos 2 destes processos em paralelo podemos, em uma situação ideal, alternar o processo em execução na CPU enquanto o outro está esperando E/S assim a CPU estará sempre executando um processo e nenhum tempo é desperdiçado com operações de E/S. Então teremos $20 + 20 = \textbf{40}$ \textbf{min}
-                    % Talvez seja 20/{[1-(0.5*0.5)]/2} = 53 min
+                     Chance dos dois processos estarem ociosos: $0.5^2= 0.25$\vspace{0.2em}\\
+                     Chance da CPU estar em execução: $1 - 0.25 = 0.75 \xrightarrow[1 Processo]{} \cfrac{0.75}{2} = 0.375$\vspace{0.4em}\\
+                     Então se um processo está com $0.375$ de execução na CPU e ele precisa de 20 o tempo total é:\\
+                     $\dfrac{20}{0.375} = \textbf{53}$ \textbf{min}
             \end{enumerate}
 
             \bigskip
@@ -91,7 +93,7 @@ Processos}
             \textbf{4 processos-filhos}, 2 no primeiro primeiro fork e noutro estes dois processos gerarão outros 2 processos filhos cada.
 
             \bigskip
-        \item Pode-se \textbf{medir se um processo} é \textbf{limitado à CPU} ou \textbf{limitado à E/S apenas analisando} o seu \textbf{código-fonte}? E \textbf{como} isso pode \textbf{ser verificado} em \textbf{tempo de execução}?\medskip% P.5
+        \item Pode-se \textbf{medir se um processo} é \textbf{limitado à CPU} ou \textbf{limitado à E/S apenas analisando} o seu \textbf{código-fonte}? E \textbf{como} isso pode \textbf{ser verificado} em \textbf{tempo de execução}?\vspace{0.15em}% P.5
 
         Existem métodos para analisar código e prever o tempo de execução, este é um campo de estudo em desenvolvimento com muito interesse e investimento pois é algo muito importante para certos equipamentos que dependem muito do tempo, como softwares de maquinas medicas ou software usados em aviões. Essa analise estática do código tenta prever os piores casos de tempo de execução e tenta encontrar os principais culpados e maneiras de melhorar o tempo de execução. Assim existe a possibilidade de descobrir através do código fonte se um programa será limitado a operações E/S ou à CPU.
 
